@@ -32,6 +32,7 @@ typedef enum {
   TOO_HIGH
 } BreachType;
 
+char AlertMessage[2][100] = {"HI, Temperature is Too Low!!!" ,"Hi, Temperature is Too High!!!" };
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC);
 
