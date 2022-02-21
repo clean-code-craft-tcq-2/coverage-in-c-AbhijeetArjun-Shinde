@@ -6,6 +6,16 @@ typedef enum {
   MED_ACTIVE_COOLING
 } CoolingType;
 
+#define NO_COOLING_TYPES 3 //Passive,HI active and MED active
+
+#define PASSIVE_COOLING_MIN_LIMIT 0
+#define PASSIVE_COOLING_MAX_LIMIT 35
+#define HI_ACTIVE_COOLING_MIN_LIMIT 0
+#define HI_ACTIVE_COOLING_MAX_LIMIT 45
+#define MED_ACTIVE_COOLING_MIN_LIMIT 0
+#define MED_ACTIVE_COOLING_MAX_LIMIT 40
+
+
 typedef enum {
   NORMAL,
   TOO_LOW,
