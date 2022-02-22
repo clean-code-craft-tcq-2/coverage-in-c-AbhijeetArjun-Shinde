@@ -1,5 +1,6 @@
 #include "typewise-alert.h"
 #include <stdio.h>
+#include <string.h>
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   if(value < lowerLimit) {
@@ -17,20 +18,24 @@ BreachType classifyTemperatureBreach(
   int upperLimit = TempLimit[coolingType].Max_Limit;
   return inferBreach(temperatureInC, lowerLimit, upperLimit);
 }
+void PrintOnConsole(const char *message){
+  printf(" %s!\n", message); 
+  return;
+}
+
 
 void checkAndAlert(
-    AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
+  AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
 
-  BreachType breachType = classifyTemperatureBreach(
-    batteryChar.coolingType, temperatureInC
-  );
-
+  BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC);
+  void (*FnPtrPrinter) (const char *message) ;
+  FnPtrPrinter = &PrintOnConsole;
   switch(alertTarget) {
     case TO_CONTROLLER:
       sendToController(breachType);
       break;
     case TO_EMAIL:
-      sendToEmail(breachType);
+      sendToEmail(breachType , FnPtrPrinter );
       break;
   }
 }
@@ -40,18 +45,10 @@ void sendToController(BreachType breachType) {
   printf("%x : %x\n", header, breachType);
 }
 
-void sendToEmail(BreachType breachType) {
+void sendToEmail(BreachType breachType , void (*FnPtrPrinter) {
   const char* recepient = "a.b@c.com";
-  switch(breachType) {
-    case TOO_LOW:
-      printf("To: %s\n", recepient);
-      printf("Hi, the temperature is too low\n");
-      break;
-    case TOO_HIGH:
-      printf("To: %s\n", recepient);
-      printf("Hi, the temperature is too high\n");
-      break;
-    case NORMAL:
-      break;
-  }
+  char message[100];
+  message = strcat("To: ", recepient);
+  message = strcat(message , AlertMessage[breachType];
+  FnPtrPrinter(message);
 }
