@@ -48,6 +48,6 @@ typedef struct {
 void checkAndAlert(
   AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
 
-void sendToController(BreachType breachType);
-void sendToEmail(BreachType breachType ,void (*FnPtrPrinter) (char message[]) ) ;
-void PrintOnConsole(char message[]);
+void sendToController(BreachType breachType , void (*FnPtrPrinter) (char *message) );
+void sendToEmail(BreachType breachType ,void (*FnPtrPrinter) (char *message) ) ;
+void PrintOnConsole(char *message);
