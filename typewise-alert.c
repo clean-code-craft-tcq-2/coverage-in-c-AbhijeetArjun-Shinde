@@ -27,7 +27,7 @@ BreachType classifyTemperatureBreach(CoolingType coolingType, double temperature
 }
 
 void PrintOnConsole(char *message){
-  printf(" %s!\n", message); 
+  printf(" %s\n", message); 
   return;
 }
 
