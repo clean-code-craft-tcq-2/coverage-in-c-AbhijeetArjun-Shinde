@@ -45,7 +45,7 @@ void sendToController(BreachType breachType) {
   printf("%x : %x\n", header, breachType);
 }
 
-void sendToEmail(BreachType breachType , void (*FnPtrPrinter) {
+void sendToEmail(BreachType breachType , void (*FnPtrPrinter)) {
   const char* recepient = "a.b@c.com";
   char message[100];
   message = strcat("To: ", recepient);
