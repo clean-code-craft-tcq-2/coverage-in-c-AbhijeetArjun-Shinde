@@ -41,7 +41,7 @@ void sendToController(BreachType breachType,void (*FnPtrPrinter) (char *message)
   const unsigned short header = 0xfeed;
   char *PrintMessage;
   sprintf(PrintMessage,"%x : %x\n", header, breachType);
-  FnPtrPrinter(PrintMessage)
+  FnPtrPrinter(PrintMessage);
 }
 
 void sendToEmail(BreachType breachType , void (*FnPtrPrinter) (char *message) ) {
