@@ -43,13 +43,5 @@ TEST_CASE("alerts breachtype") {
   REQUIRE(checkAndAlert(TO_EMAIL, batteryChar, 27) == 1);
   REQUIRE(checkAndAlert(TO_EMAIL, batteryChar, -10) == 1);
   
-  batteryChar.coolingType =  MED_ACTIVE_COOLING;
-  REQUIRE(checkAndAlert(TO_CONTROLLER, batteryChar, 42) == 0);
-  REQUIRE(checkAndAlert(TO_CONTROLLER, batteryChar, 27) == 0);
-  REQUIRE(checkAndAlert(TO_CONTROLLER, batteryChar, -10) == 0);
-  
-  REQUIRE(checkAndAlert(TO_EMAIL, batteryChar, 42) == 1);
-  REQUIRE(checkAndAlert(TO_EMAIL, batteryChar, 27) == 1);
-  REQUIRE(checkAndAlert(TO_EMAIL, batteryChar, -10) == 1);
-  
+
 }
