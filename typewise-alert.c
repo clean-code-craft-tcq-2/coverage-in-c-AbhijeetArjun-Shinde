@@ -31,7 +31,7 @@ void PrintOnConsole(char *message){
   return;
 }
 
-void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
+int checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
   BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC);
   
   void (*FnPtrPrinter) (char *message) ;
@@ -41,6 +41,7 @@ void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double
   FnPtrAlerter[1] = &sendToEmail;
   
   FnPtrAlerter[alertTarget]( breachType , FnPtrPrinter);
+  return alertTarget;
 }
 
 void sendToController(BreachType breachType,void (*FnPtrPrinter) (char *message)) {
