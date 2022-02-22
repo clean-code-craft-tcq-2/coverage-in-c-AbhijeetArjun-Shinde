@@ -8,11 +8,7 @@ Limits TempLimit[NO_COOLING_TYPES]= {{PASSIVE_COOLING_MIN_LIMIT,PASSIVE_COOLING_
 
 char AlertMessage[NO_BREACH_TYPES][50] = {"","HI, Temperature is Too Low!!!" ,"Hi, Temperature is Too High!!!" };
 
-void (*FnPtrPrinter) (char *message) ;
-FnPtrPrinter = &PrintOnConsole;
-void (*FnPtrAlerter[2])(BreachType breachType,void (*FnPtrPrinter) (char *message));
-FnPtrAlerter[0] = &sendToController;
-FnPtrAlerter[1] = &sendToEmail;
+
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   if(value < lowerLimit) {
@@ -37,6 +33,13 @@ void PrintOnConsole(char *message){
 
 void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
   BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC);
+  
+  void (*FnPtrPrinter) (char *message) ;
+  FnPtrPrinter = &PrintOnConsole;
+  void (*FnPtrAlerter[2])(BreachType breachType,void (*FnPtrPrinter) (char *message));
+  FnPtrAlerter[0] = &sendToController;
+  FnPtrAlerter[1] = &sendToEmail;
+  
   FnPtrAlerter[alertTarget]( breachType , FnPtrPrinter);
 }
 
