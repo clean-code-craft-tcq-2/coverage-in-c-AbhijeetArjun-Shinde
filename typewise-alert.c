@@ -6,7 +6,7 @@ Limits TempLimit[NO_COOLING_TYPES]= {{PASSIVE_COOLING_MIN_LIMIT,PASSIVE_COOLING_
                                  {HI_ACTIVE_COOLING_MIN_LIMIT,HI_ACTIVE_COOLING_MAX_LIMIT},
                                  {MED_ACTIVE_COOLING_MIN_LIMIT,MED_ACTIVE_COOLING_MAX_LIMIT}};
 
-char AlertMessage[NO_BREACH_TYPES][50] = {"","HI, Temperature is Too Low!!!" ,"Hi, Temperature is Too High!!!" };
+char AlertMessage[NO_BREACH_TYPES][50] = {"","Hi, Temperature is Too Low!!!" ,"Hi, Temperature is Too High!!!" };
 
 
 
@@ -27,7 +27,7 @@ BreachType classifyTemperatureBreach(CoolingType coolingType, double temperature
 }
 
 void PrintOnConsole(char *message){
-  printf(" %s\n", message); 
+  printf(" %s", message); 
   return;
 }
 
