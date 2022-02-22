@@ -28,7 +28,7 @@ void checkAndAlert(
   AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
 
   BreachType breachType = classifyTemperatureBreach(batteryChar.coolingType, temperatureInC);
-  void (*FnPtrPrinter) (const char *message) ;
+  void (*FnPtrPrinter) (char message[]) ;
   FnPtrPrinter = &PrintOnConsole;
   switch(alertTarget) {
     case TO_CONTROLLER:
@@ -45,7 +45,7 @@ void sendToController(BreachType breachType) {
   printf("%x : %x\n", header, breachType);
 }
 
-void sendToEmail(BreachType breachType , void (*FnPtrPrinter) (const char *message) ) {
+void sendToEmail(BreachType breachType , void (*FnPtrPrinter) (char message[]) ) {
   char* recepient = "a.b@c.com";
   char message[100];
   message = strcat("To: ", recepient);
