@@ -36,24 +36,26 @@ int checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double 
   
   void (*FnPtrPrinter) (char *message) ;
   FnPtrPrinter = &PrintOnConsole;
-  void (*FnPtrAlerter[2])(BreachType breachType,void (*FnPtrPrinter) (char *message));
+  int (*FnPtrAlerter[2])(BreachType breachType,void (*FnPtrPrinter) (char *message));
   FnPtrAlerter[0] = &sendToController;
   FnPtrAlerter[1] = &sendToEmail;
   
-  FnPtrAlerter[alertTarget]( breachType , FnPtrPrinter);
-  return alertTarget;
+  return FnPtrAlerter[alertTarget]( breachType , FnPtrPrinter);
+  
 }
 
-void sendToController(BreachType breachType,void (*FnPtrPrinter) (char *message)) {
+int sendToController(BreachType breachType,void (*FnPtrPrinter) (char *message)) {
   const unsigned short header = 0xfeed;
   char PrintMessage[150];
   sprintf(PrintMessage,"%x : %x\n", header, breachType);
   FnPtrPrinter(PrintMessage);
+  return 0;
 }
 
-void sendToEmail(BreachType breachType , void (*FnPtrPrinter) (char *message) ) {
+int sendToEmail(BreachType breachType , void (*FnPtrPrinter) (char *message) ) {
   const char *recepientEmail = "a.b@c.com";
   char PrintMessage[150];
   sprintf(PrintMessage,"To : %s\n  %s\n", recepientEmail, AlertMessage[breachType]);
   FnPtrPrinter(PrintMessage);
+  return 1;
 }
