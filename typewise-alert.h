@@ -20,17 +20,13 @@ typedef struct{
   double Max_Limit;
 } Limits;
 
-Limits TempLimit[NO_COOLING_TYPES]= {{PASSIVE_COOLING_MIN_LIMIT,PASSIVE_COOLING_MAX_LIMIT},
-                                 {HI_ACTIVE_COOLING_MIN_LIMIT,HI_ACTIVE_COOLING_MAX_LIMIT},
-                                 {MED_ACTIVE_COOLING_MIN_LIMIT,MED_ACTIVE_COOLING_MAX_LIMIT}};
-
 typedef enum {
   NORMAL,
   TOO_LOW,
   TOO_HIGH
 } BreachType;
 
-char AlertMessage[3][50] = {"","HI, Temperature is Too Low!!!" ,"Hi, Temperature is Too High!!!" };
+#define NO_BREACH_TYPES 3
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
 BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC);
