@@ -46,7 +46,7 @@ int checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double 
 
 void sendToController(BreachType breachType,void (*FnPtrPrinter) (char *message)) {
   const unsigned short header = 0xfeed;
-  char *PrintMessage;
+  char PrintMessage[150];
   sprintf(PrintMessage,"%x : %x\n", header, breachType);
   FnPtrPrinter(PrintMessage);
 }
