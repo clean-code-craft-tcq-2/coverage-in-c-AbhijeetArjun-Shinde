@@ -49,5 +49,5 @@ void checkAndAlert(
   AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
 
 void sendToController(BreachType breachType);
-void sendToEmail(BreachType breachType , void (*FnPtrPrinter) ;
+void sendToEmail(BreachType breachType , void (*FnPtrPrinter)) ;
 void PrintOnConsole(const char *message);
