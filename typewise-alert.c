@@ -53,7 +53,7 @@ void sendToController(BreachType breachType,void (*FnPtrPrinter) (char *message)
 
 void sendToEmail(BreachType breachType , void (*FnPtrPrinter) (char *message) ) {
   const char *recepientEmail = "a.b@c.com";
-  char *PrintMessage;
+  char PrintMessage[150];
   sprintf(PrintMessage,"To : %s\n  %s\n", recepientEmail, AlertMessage[breachType]);
   FnPtrPrinter(PrintMessage);
 }
