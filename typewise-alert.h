@@ -41,8 +41,7 @@ typedef struct {
   char brand[48];
 } BatteryCharacter;
 
-void checkAndAlert(
-  AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
+int checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
 
 void sendToController(BreachType breachType , void (*FnPtrPrinter) (char *message) );
 void sendToEmail(BreachType breachType ,void (*FnPtrPrinter) (char *message) ) ;
