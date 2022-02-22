@@ -48,8 +48,7 @@ void sendToController(BreachType breachType) {
 void sendToEmail(BreachType breachType , void (*FnPtrPrinter) (char message[]) ) {
   char recepientEmail[] = "a.b@c.com";
   char msg[]= "To: ";
-  char message[100];
-  message = strcat(msg, recepientEmail);
-  message = strcat(message , AlertMessage[breachType]);
-  FnPtrPrinter(message);
+  strcat(msg, recepientEmail);
+  strcat(msg , AlertMessage[breachType]);
+  FnPtrPrinter(msg);
 }
