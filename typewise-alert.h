@@ -50,4 +50,4 @@ void checkAndAlert(
 
 void sendToController(BreachType breachType);
 void sendToEmail(BreachType breachType ,void (*FnPtrPrinter) (const char *message) ) ;
-void PrintOnConsole(const char *message);
+void PrintOnConsole(char message[]);
