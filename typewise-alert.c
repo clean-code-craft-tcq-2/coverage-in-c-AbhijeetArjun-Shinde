@@ -18,7 +18,7 @@ BreachType classifyTemperatureBreach(
   int upperLimit = TempLimit[coolingType].Max_Limit;
   return inferBreach(temperatureInC, lowerLimit, upperLimit);
 }
-void PrintOnConsole(const char *message){
+void PrintOnConsole(const char message[]){
   printf(" %s!\n", message); 
   return;
 }
