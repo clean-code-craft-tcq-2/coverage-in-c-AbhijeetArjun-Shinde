@@ -39,8 +39,12 @@ int checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double 
   int (*FnPtrAlerter[2])(BreachType breachType,void (*FnPtrPrinter) (char *message));
   FnPtrAlerter[0] = &sendToController;
   FnPtrAlerter[1] = &sendToEmail;
-  
+  if(breachType != NORMAL ){
   return FnPtrAlerter[alertTarget]( breachType , FnPtrPrinter);
+  }
+  else{
+  return 2;
+  }
   
 }
 
